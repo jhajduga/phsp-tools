@@ -102,5 +102,10 @@ Legacy IAEA headers define min/max macros: keep them in their own include group 
 undefine the macros immediately afterwards. Use the compiler matching the ROOT ABI.
 
 `.github/workflows/ci.yml` provisions Conda, builds and runs CTest on push/PR without
-external data or secrets. Local test success is not a GitHub Actions run; CI starts
-after repository publication. [Build commands](building.md).
+external data or secrets. The Conda configure/build presets clear `CPLUS_INCLUDE_PATH`
+to preserve GCC's standard-header order; the test preset supplies it only at runtime
+for ROOT's interpreter. Local test success is not a remote GitHub Actions run.
+[Build commands](building.md).
+
+`.github/workflows/pages.yml` builds the mdBook and checks links on pull requests,
+then deploys main to GitHub Pages. [Documentation workflow and local preview](documentation.md).

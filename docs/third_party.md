@@ -2,6 +2,9 @@
 
 [Back to README](../README.md)
 
+Project-owned code is distributed under the [MIT License](../LICENSE).
+The bundled components below retain their own notices and terms.
+
 ## IAEA reference implementation
 
 `core/vendor/iaea/` contains the reference phase-space reader, writer and structures.
@@ -9,7 +12,8 @@ Source headers retain International Atomic Energy Agency copyright (2006), permi
 to use/copy/modify/distribute and its conditions/disclaimer. The retained notice is
 [core/vendor/iaea/LICENSE](../core/vendor/iaea/LICENSE).
 
-Local changes recognize negative-zero history markers using signbit, fix character
+Local changes recognize negative-zero history markers using signbit through the C++
+`<cmath>` header, fix character
 array deletion with delete[], return the correct reused source-handle ID, and remove
 unconditional informational stdout messages in favour of wrapper logging. Wrappers
 and provenance are implemented in `core/src/conversion.cpp` and `processing.cpp`.

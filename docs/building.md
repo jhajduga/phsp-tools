@@ -40,16 +40,28 @@ ctest --test-dir build --output-on-failure
 ```sh
 conda env create -f environment.yml
 conda activate phsp-tools
-export CPLUS_INCLUDE_PATH="$CONDA_PREFIX/x86_64-conda-linux-gnu/sysroot/usr/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}"
 cmake --preset conda
 cmake --build --preset conda
 ctest --preset conda
 ```
 
-The preset selects the active environment's compiler and sysroot include directory.
-This avoids mixing a system compiler's headers with a different libstdc++ used by ROOT.
-Preset environment settings apply to CMake/build/test processes; the export above
-also covers directly launched CLI programs and ROOT macros.
+The configure preset selects the active environment's compiler and clears
+`CPLUS_INCLUDE_PATH` for configuration and compilation. GCC already knows its own
+sysroot. Prepending its C headers through that variable can put them before C++
+wrapper headers and break `#include_next <stdlib.h>`.
+
+The **test** preset supplies the sysroot include path only to runtime processes,
+where ROOT's Cling interpreter can need it. If a directly launched CLI or ROOT macro
+reports a missing C header, apply the same workaround to that command only:
+
+```sh
+CPLUS_INCLUDE_PATH="$CONDA_PREFIX/x86_64-conda-linux-gnu/sysroot/usr/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}" \
+  build/bin/phspPipeline examples/pipeline.json
+```
+
+Do not export this workaround globally before compiling. A prior export is cleared
+by the Conda configure/build presets; direct `cmake --build build` does not apply
+preset environment settings.
 
 For other platforms use the default preset with a compiler matching your ROOT installation.
 Local validation uses Linux x86_64, ROOT 6.34.04 and GCC 13.3.
@@ -78,7 +90,9 @@ or modified. Test artifacts can be removed with the build directory.
 
 | Symptom | Check |
 |---|---|
-| Cling cannot find `assert.h` | Activate the correct environment and use its existing sysroot include directory as above. |
+| Cling cannot find `assert.h` | Use the Conda test preset, or the command-local runtime sysroot setting above. |
+| GCC `cstdlib`: `#include_next <stdlib.h>` fails | Remove a globally exported `CPLUS_INCLUDE_PATH`; use the updated Conda configure/build presets. |
+| `std::signbit`: expected unqualified-id | Use `<cmath>` rather than the legacy C `math.h`; the bundled IAEA reader includes this correction. |
 | Undefined `std::...` symbols while linking | Reconfigure in a fresh build directory with the compiler/runtime matching ROOT. |
 | IAEA `res=-3` | Header size/count mismatch; inspect the diagnostic and use `--allow-incomplete` only to process the available complete records. |
 | Missing history analysis | Check the report reason: old schema, stride, missing markers or disabled history pass. |

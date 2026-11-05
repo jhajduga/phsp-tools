@@ -21,16 +21,28 @@
         "CMAKE_PREFIX_PATH": "$env{CONDA_PREFIX}"
       },
       "environment": {
-        "CPLUS_INCLUDE_PATH": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/include:$penv{CPLUS_INCLUDE_PATH}"
+        "CPLUS_INCLUDE_PATH": ""
       }
     }
   ],
   "buildPresets": [
     {"name": "default", "configurePreset": "default", "jobs": 4},
-    {"name": "conda", "configurePreset": "conda", "jobs": 4}
+    {
+      "name": "conda",
+      "configurePreset": "conda",
+      "environment": {"CPLUS_INCLUDE_PATH": ""},
+      "jobs": 4
+    }
   ],
   "testPresets": [
     {"name": "default", "configurePreset": "default", "output": {"outputOnFailure": true}},
-    {"name": "conda", "configurePreset": "conda", "output": {"outputOnFailure": true}}
+    {
+      "name": "conda",
+      "configurePreset": "conda",
+      "environment": {
+        "CPLUS_INCLUDE_PATH": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/include:$penv{CPLUS_INCLUDE_PATH}"
+      },
+      "output": {"outputOnFailure": true}
+    }
   ]
 }

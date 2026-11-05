@@ -13,6 +13,14 @@ The functionality is integrated into the existing C++ build rather than maintain
 as separate projects. Python interfaces are not included; JSON pipelines invoke the
 same public API as the standalone executables.
 
+Replacement READMEs for the old repositories are available for copying:
+
+- [phspCutter retirement README](legacy_readmes/phspCutter/README.md)
+- [phspMerger retirement README](legacy_readmes/phspMerger/README.md)
+
+These notices use `https://github.com/jhajduga/phsp-tools` as the planned destination
+for PHSP Tools.
+
 ## Preserved behaviour
 
 The cutter's default aperture is −7..7 cm in X/Y at Z=100 cm, accepting +Z motion

@@ -5,6 +5,9 @@
 /.cache/
 /CMakeUserPresets.json
 /compile_commands.json
+/book/
+/mermaid.min.js
+/mermaid-init.js
 *.root
 *.IAEAphsp
 *.IAEAheader

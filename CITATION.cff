@@ -1,0 +1,20 @@
+cff-version: 1.2.0
+message: "If you use PHSP Tools in your research, please cite this software."
+type: software
+title: PHSP Tools
+authors:
+  - family-names: Hajduga
+    given-names: Jakub
+version: 0.3.0
+license: MIT
+repository-code: "https://github.com/jhajduga/phsp_pkg"
+url: "https://github.com/jhajduga/phsp_pkg"
+abstract: >-
+  A C++ toolkit for IAEA phase-space preparation, conversion to ROOT,
+  particle and scored-history analysis, source comparison, and JSON pipelines.
+keywords:
+  - phase space
+  - IAEA
+  - ROOT
+  - Monte Carlo
+  - radiotherapy

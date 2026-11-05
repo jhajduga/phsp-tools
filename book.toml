@@ -1,0 +1,30 @@
+[book]
+title = "PHSP Tools"
+description = "IAEA phase-space preparation, ROOT analysis and source comparison"
+authors = ["Jakub Hajduga"]
+language = "en"
+src = "docs"
+
+[build]
+build-dir = "book"
+
+[preprocessor.repo-links]
+command = "python3 .github/scripts/mdbook-links.py"
+after = ["links", "index"]
+
+[preprocessor.mermaid]
+command = "mdbook-mermaid"
+
+[output.html]
+default-theme = "light"
+preferred-dark-theme = "navy"
+git-repository-url = "https://github.com/jhajduga/phsp_pkg"
+additional-js = ["mermaid.min.js", "mermaid-init.js"]
+smart-punctuation = true
+
+[output.html.search]
+enable = true
+
+[output.html.fold]
+enable = true
+level = 1

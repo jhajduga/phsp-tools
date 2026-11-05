@@ -17,6 +17,11 @@ jobs:
           activate-environment: phsp-tools
           environment-file: environment.yml
           channel-priority: strict
+      - name: Toolchain versions
+        run: |
+          "${CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-c++" --version
+          root-config --version
+          cmake --version
       - name: Configure
         run: cmake --preset conda
       - name: Build

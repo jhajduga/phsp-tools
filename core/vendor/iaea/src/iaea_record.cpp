@@ -47,7 +47,7 @@
 #if (defined WIN32) || (defined WIN64)
 #include <iostream>  // so that namespace std becomes defined
 #endif
-#include <math.h>
+#include <cmath>
 #include <cstdio>
 
 #if !(defined WIN32) && !(defined WIN64)

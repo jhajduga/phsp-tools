@@ -28,6 +28,8 @@ install(TARGETS phsp_core ARCHIVE DESTINATION ${CMAKE_INSTALL_LIBDIR}
 install(DIRECTORY include/phsp DESTINATION ${CMAKE_INSTALL_INCLUDEDIR})
 install(FILES vendor/iaea/LICENSE DESTINATION ${CMAKE_INSTALL_DATADIR}/phsp_tools/licenses RENAME IAEA.txt)
 install(FILES vendor/legacy/LICENSE.phspCutter DESTINATION ${CMAKE_INSTALL_DATADIR}/phsp_tools/licenses)
+install(FILES ${PROJECT_SOURCE_DIR}/LICENSE DESTINATION ${CMAKE_INSTALL_DATADIR}/phsp_tools/licenses RENAME PHSP_Tools.txt)
+install(FILES ${PROJECT_SOURCE_DIR}/CITATION.cff DESTINATION ${CMAKE_INSTALL_DATADIR}/phsp_tools)
 if(BUILD_TESTING)
     add_subdirectory(tests)
 endif()

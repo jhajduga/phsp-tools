@@ -47,13 +47,14 @@ Alternatively, on Linux x86_64:
 ```sh
 conda env create -f environment.yml
 conda activate phsp-tools
-export CPLUS_INCLUDE_PATH="$CONDA_PREFIX/x86_64-conda-linux-gnu/sysroot/usr/include${CPLUS_INCLUDE_PATH:+:$CPLUS_INCLUDE_PATH}"
 cmake --preset conda
 cmake --build --preset conda
 ctest --preset conda
 ```
 
 Executables are in **`build/bin/`**. See [building and troubleshooting](docs/building.md).
+The Conda test preset supplies the sysroot headers to ROOT's interpreter at runtime;
+do not export that header path globally before compiling.
 
 ```sh
 build/bin/phspToRootMT /data/beam.IAEAheader \
@@ -251,6 +252,10 @@ their own small fixtures and do not require external PHSP datasets.
 
 ## Documentation
 
+The documentation also builds as an **mdBook** with search, chapter navigation and
+Mermaid diagrams. The Pages workflow validates pull requests and publishes pushes
+to `main`. [Build locally and configure GitHub Pages](docs/documentation.md).
+
 - [Analysis catalogue](docs/analyses.md)
 - [Reference-plane geometry and scientific assumptions](docs/geometry.md)
 - [Pipeline configuration](docs/pipeline.md)
@@ -262,3 +267,10 @@ their own small fixtures and do not require external PHSP datasets.
 - [Legacy tools and attribution](docs/legacy_tools.md)
 - [Third-party components](docs/third_party.md)
 - [ROOT examples](examples/README.md)
+
+## License and citation
+
+PHSP Tools is available under the [MIT License](LICENSE). Bundled third-party code
+retains its own [licence notices](docs/third_party.md).
+
+If you use PHSP Tools in research, please cite the software using [CITATION.cff](CITATION.cff).
