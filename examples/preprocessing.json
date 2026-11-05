@@ -1,0 +1,31 @@
+{
+  "output_dir": "../results/prepared_beam",
+  "threads": 4,
+  "preprocessing": [
+    {
+      "name": "joined",
+      "operation": "merge",
+      "inputs": ["/data/independent_run1.IAEAheader", "/data/independent_run2.IAEAheader"]
+    },
+    {
+      "name": "field",
+      "operation": "cut",
+      "input": "@joined",
+      "project_z_cm": 100.0,
+      "x_min_cm": -7.0,
+      "x_max_cm": 7.0,
+      "y_min_cm": -7.0,
+      "y_max_cm": 7.0
+    }
+  ],
+  "conversion": {"extras": true},
+  "analysis": {
+    "bins": 120,
+    "energy_max_MeV": 7.0,
+    "xy_max_cm": 8.0,
+    "project_z_cm": 100.0,
+    "plots": true,
+    "histories": true
+  },
+  "datasets": [{"name": "selected", "input": "@field"}]
+}

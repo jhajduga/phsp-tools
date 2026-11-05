@@ -1,0 +1,8 @@
+foreach(app IN ITEMS phspToRootMT phspAnalyze phspCompare phspPipeline phspCutter phspMerger)
+    add_executable(${app} ${app}.cpp)
+    target_link_libraries(${app} PRIVATE phsp::core)
+    if(CMAKE_CXX_COMPILER_ID MATCHES "GNU|Clang")
+        target_compile_options(${app} PRIVATE -Wall -Wextra -Wpedantic)
+    endif()
+    install(TARGETS ${app} RUNTIME DESTINATION ${CMAKE_INSTALL_BINDIR})
+endforeach()

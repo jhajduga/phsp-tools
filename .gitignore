@@ -1,0 +1,20 @@
+# Build trees and generated analysis data
+/build*/
+/results/
+/output/
+/.cache/
+/CMakeUserPresets.json
+/compile_commands.json
+*.root
+*.IAEAphsp
+*.IAEAheader
+*.partial
+*.log
+
+# Editors and local environments
+/.vscode/
+/.idea/
+/.conda/
+.env
+.DS_Store
+__pycache__/

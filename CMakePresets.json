@@ -1,0 +1,36 @@
+{
+  "version": 2,
+  "configurePresets": [
+    {
+      "name": "default",
+      "displayName": "System ROOT / Release",
+      "generator": "Ninja",
+      "binaryDir": "${sourceDir}/build",
+      "cacheVariables": {
+        "CMAKE_BUILD_TYPE": "Release",
+        "CMAKE_EXPORT_COMPILE_COMMANDS": "ON",
+        "BUILD_TESTING": "ON"
+      }
+    },
+    {
+      "name": "conda",
+      "displayName": "Conda / Linux x86_64",
+      "inherits": "default",
+      "cacheVariables": {
+        "CMAKE_CXX_COMPILER": "$env{CONDA_PREFIX}/bin/x86_64-conda-linux-gnu-c++",
+        "CMAKE_PREFIX_PATH": "$env{CONDA_PREFIX}"
+      },
+      "environment": {
+        "CPLUS_INCLUDE_PATH": "$env{CONDA_PREFIX}/x86_64-conda-linux-gnu/sysroot/usr/include:$penv{CPLUS_INCLUDE_PATH}"
+      }
+    }
+  ],
+  "buildPresets": [
+    {"name": "default", "configurePreset": "default", "jobs": 4},
+    {"name": "conda", "configurePreset": "conda", "jobs": 4}
+  ],
+  "testPresets": [
+    {"name": "default", "configurePreset": "default", "output": {"outputOnFailure": true}},
+    {"name": "conda", "configurePreset": "conda", "output": {"outputOnFailure": true}}
+  ]
+}

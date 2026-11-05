@@ -1,0 +1,25 @@
+name: Build and test
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  linux:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 30
+    defaults:
+      run:
+        shell: bash -el {0}
+    steps:
+      - uses: actions/checkout@v7
+      - uses: conda-incubator/setup-miniconda@v4
+        with:
+          miniforge-version: latest
+          activate-environment: phsp-tools
+          environment-file: environment.yml
+          channel-priority: strict
+      - name: Configure
+        run: cmake --preset conda
+      - name: Build
+        run: cmake --build --preset conda
+      - name: Test
+        run: ctest --preset conda

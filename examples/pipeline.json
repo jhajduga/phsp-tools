@@ -1,0 +1,35 @@
+{
+  "output_dir": "../results/beam_comparison",
+  "threads": 4,
+  "conversion": {
+    "extras": true,
+    "allow_incomplete": true,
+    "stride": 1,
+    "max_records": 5000000
+  },
+  "analysis": {
+    "bins": 240,
+    "energy_max_MeV": 7.0,
+    "xy_max_cm": 32.0,
+    "plots": true,
+    "histories": true,
+    "project_z_cm": 100.0
+  },
+  "datasets": [
+    {
+      "name": "reference",
+      "input": "/mnt/data/PHSP/TNSIM157_30x30s2-f0.IAEAheader"
+    },
+    {
+      "name": "candidate",
+      "input": "/mnt/data/PHSP/TrueBeam.IAEAheader"
+    }
+  ],
+  "comparisons": [
+    {
+      "name": "candidate_vs_reference",
+      "reference": "reference",
+      "candidate": "candidate"
+    }
+  ]
+}
