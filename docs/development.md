@@ -107,5 +107,5 @@ to preserve GCC's standard-header order; the test preset supplies it only at run
 for ROOT's interpreter. Local test success is not a remote GitHub Actions run.
 [Build commands](building.md).
 
-`.github/workflows/pages.yml` builds the mdBook and checks links on pull requests,
+`.github/workflows/mdbook.yml` builds the mdBook and checks links on pull requests,
 then deploys main to GitHub Pages. [Documentation workflow and local preview](documentation.md).

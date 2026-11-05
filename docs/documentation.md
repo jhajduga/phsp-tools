@@ -37,7 +37,7 @@ does not read or publish PHSP input files, analysis results or CMake build trees
 
 ## GitHub Pages setup
 
-The workflow is [`.github/workflows/pages.yml`](../.github/workflows/pages.yml).
+The workflow is [`.github/workflows/mdbook.yml`](../.github/workflows/mdbook.yml).
 For the repository that will host the site:
 
 1. Open **Settings → Pages → Build and deployment**.
@@ -59,7 +59,7 @@ The workflow:
 - Gives the deployment job `pages: write` and `id-token: write`; no personal token is needed.
 
 If deployment should move to another branch, update both the push branch and the
-main-branch conditions in `pages.yml`. Keep builds for pull requests enabled.
+main-branch conditions in `mdbook.yml`. Keep builds for pull requests enabled.
 
 ## Editing the book
 

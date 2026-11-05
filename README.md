@@ -267,6 +267,7 @@ to `main`. [Build locally and configure GitHub Pages](docs/documentation.md).
 - [Legacy tools and attribution](docs/legacy_tools.md)
 - [Third-party components](docs/third_party.md)
 - [ROOT examples](examples/README.md)
+- [First release and Zenodo DOI](docs/releases.md)
 
 ## License and citation
 
@@ -274,3 +275,33 @@ PHSP Tools is available under the [MIT License](LICENSE). Bundled third-party co
 retains its own [licence notices](docs/third_party.md).
 
 If you use PHSP Tools in research, please cite the software using [CITATION.cff](CITATION.cff).
+
+<!-- CITATION:START -->
+Use **Cite this repository** on the GitHub repository page to copy a citation,
+download [BibTeX](https://raw.githubusercontent.com/jhajduga/phsp-tools/main/CITATION.bib) or [plain text](https://raw.githubusercontent.com/jhajduga/phsp-tools/main/CITATION.txt),
+or copy one of the references below. Metadata are maintained in [CITATION.cff](CITATION.cff).
+
+### Plain-text reference
+
+```text
+Hajduga J. PHSP Tools (version 0.3.0). URL: https://github.com/jhajduga/phsp-tools
+```
+
+### BibTeX
+
+```bibtex
+@misc{phsp_tools_0_3_0,
+version = {0.3.0},
+note = {Version 0.3.0},
+author = {Hajduga, Jakub},
+title = {PHSP Tools},
+url = {https://github.com/jhajduga/phsp-tools}
+}
+```
+
+A Zenodo DOI is not yet recorded in `CITATION.cff`. These references use the GitHub URL;
+they will include the DOI after the metadata are updated.
+
+For reproducible research, cite the version you used and its version DOI when available.
+[First release and Zenodo instructions](docs/releases.md).
+<!-- CITATION:END -->

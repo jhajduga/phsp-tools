@@ -18,7 +18,7 @@ command = "mdbook-mermaid"
 [output.html]
 default-theme = "light"
 preferred-dark-theme = "navy"
-git-repository-url = "https://github.com/jhajduga/phsp_pkg"
+git-repository-url = "https://github.com/jhajduga/phsp-tools"
 additional-js = ["mermaid.min.js", "mermaid-init.js"]
 smart-punctuation = true
 

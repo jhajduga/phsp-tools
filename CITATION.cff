@@ -7,8 +7,8 @@ authors:
     given-names: Jakub
 version: 0.3.0
 license: MIT
-repository-code: "https://github.com/jhajduga/phsp_pkg"
-url: "https://github.com/jhajduga/phsp_pkg"
+repository-code: "https://github.com/jhajduga/phsp-tools"
+url: "https://github.com/jhajduga/phsp-tools"
 abstract: >-
   A C++ toolkit for IAEA phase-space preparation, conversion to ROOT,
   particle and scored-history analysis, source comparison, and JSON pipelines.

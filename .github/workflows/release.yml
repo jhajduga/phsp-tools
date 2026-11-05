@@ -1,0 +1,58 @@
+name: Prepare draft release
+
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: "Version matching CMakeLists.txt and CITATION.cff (without v)"
+        required: true
+        default: "0.3.0"
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: release-${{ inputs.version }}
+  cancel-in-progress: false
+
+jobs:
+  test:
+    if: github.ref == 'refs/heads/main'
+    uses: ./.github/workflows/ci.yml
+
+  draft:
+    needs: test
+    runs-on: ubuntu-24.04
+    timeout-minutes: 10
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+          cache: pip
+          cache-dependency-path: .github/requirements-citation.txt
+      - name: Install citation tools
+        run: python -m pip install -r .github/requirements-citation.txt
+      - name: Prepare source archives and citation assets
+        env:
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: python .github/scripts/prepare-release.py --version "$RELEASE_VERSION" --ref "$GITHUB_SHA"
+      - name: Create unpublished GitHub release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_VERSION: ${{ inputs.version }}
+        run: |
+          release_url="$(gh release create "v${RELEASE_VERSION}" .cache/release/* \
+            --repo "$GITHUB_REPOSITORY" \
+            --target "$GITHUB_SHA" \
+            --title "PHSP Tools v${RELEASE_VERSION}" \
+            --notes-file .cache/release/RELEASE_NOTES.md \
+            --draft)"
+          printf '## Draft release prepared\n\n%s\n\nReview the assets and notes, then publish from GitHub Releases. Connect Zenodo before publishing.\n' \
+            "$release_url" >> "$GITHUB_STEP_SUMMARY"
