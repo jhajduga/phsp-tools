@@ -6,6 +6,8 @@ authors:
   - family-names: Hajduga
     given-names: Jakub
 version: 0.3.0
+doi: 10.5281/zenodo.23989384
+date-released: 2026-11-05
 license: MIT
 repository-code: "https://github.com/jhajduga/phsp-tools"
 url: "https://github.com/jhajduga/phsp-tools"

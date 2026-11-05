@@ -47,6 +47,9 @@ def update(root, check=False):
         "### BibTeX\n\n"
         f"```bibtex\n{bibtex.rstrip()}\n```\n\n"
     )
+    if metadata.get("doi"):
+        doi = metadata["doi"]
+        block += f"[![DOI](https://zenodo.org/badge/DOI/{doi}.svg)](https://doi.org/{doi})\n\n"
     if not metadata.get("doi"):
         block += (
             "A Zenodo DOI is not yet recorded in `CITATION.cff`. These references use the GitHub URL;\n"

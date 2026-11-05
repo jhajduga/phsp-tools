@@ -1,5 +1,7 @@
 # PHSP Tools
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23989384.svg)](https://doi.org/10.5281/zenodo.23989384)
+
 **IAEA phase space → preparation → ROOT → beam analysis → reports → source comparison.**
 
 A C++ toolkit for inspecting particles and scored histories in phase-space files.
@@ -284,7 +286,7 @@ or copy one of the references below. Metadata are maintained in [CITATION.cff](C
 ### Plain-text reference
 
 ```text
-Hajduga J. PHSP Tools (version 0.3.0). URL: https://github.com/jhajduga/phsp-tools
+Hajduga J. (2026). PHSP Tools (version 0.3.0). DOI: 10.5281/zenodo.23989384 URL: https://github.com/jhajduga/phsp-tools
 ```
 
 ### BibTeX
@@ -294,13 +296,15 @@ Hajduga J. PHSP Tools (version 0.3.0). URL: https://github.com/jhajduga/phsp-too
 version = {0.3.0},
 note = {Version 0.3.0},
 author = {Hajduga, Jakub},
+doi = {10.5281/zenodo.23989384},
+month = {11},
 title = {PHSP Tools},
-url = {https://github.com/jhajduga/phsp-tools}
+url = {https://github.com/jhajduga/phsp-tools},
+year = {2026}
 }
 ```
 
-A Zenodo DOI is not yet recorded in `CITATION.cff`. These references use the GitHub URL;
-they will include the DOI after the metadata are updated.
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23989384.svg)](https://doi.org/10.5281/zenodo.23989384)
 
 For reproducible research, cite the version you used and its version DOI when available.
 [First release and Zenodo instructions](docs/releases.md).
